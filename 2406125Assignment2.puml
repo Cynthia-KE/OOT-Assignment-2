@@ -1,0 +1,52 @@
+@startuml
+
+' Define the interface DataSource
+interface DataSource {
+    + execute() : void
+}
+
+' Define the classes that implement DataSource with dotted lines
+class Update {
+    + execute() : void
+}
+class View {
+    + execute() : void
+}
+class Delete {
+    + execute() : void
+}
+
+' Dotted lines to show interface implementation
+DataSource <.. Update
+DataSource <.. View
+DataSource <.. Delete
+
+' Define the abstract class Account with attributes and methods
+abstract class Account {
+    # id : int
+    # name : String
+    - myData : DataSource
+    + performOperation(DataSource myData) : void
+}
+
+' Define the Admin class, extending Account
+class Admin {
+    - AuthPassword : String
+    + Admin(int id, String name, String password)
+}
+
+' Define the User class, extending Account
+class User {
+    + User(int id, String name)
+}
+
+' Inheritance between Account and Admin (Single line)
+Account <|-- Admin
+
+' Inheritance between Account and User (Single line)
+Account <|-- User
+
+' Add solid association line between Account and DataSource (no arrow)
+Account -- DataSource : association
+
+@enduml
