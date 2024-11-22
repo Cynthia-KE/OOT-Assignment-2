@@ -5,7 +5,7 @@ interface DataSource {
     + execute() : void
 }
 
-' Define the classes that implement DataSource with dotted lines
+' Define the classes that implement DataSource
 class Update {
     + execute() : void
 }
@@ -40,13 +40,13 @@ class User {
     + User(int id, String name)
 }
 
-' Inheritance between Account and Admin (Single line)
+' Inheritance between Account and Admin
 Account <|-- Admin
 
-' Inheritance between Account and User (Single line)
+' Inheritance between Account and User
 Account <|-- User
 
-' Add solid association line between Account and DataSource (no arrow)
+' Add solid association line between Account and DataSource
 Account -- DataSource : association
 
 @enduml
